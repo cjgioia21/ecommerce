@@ -5,7 +5,6 @@ import org.example8927850.ecommerce.product.ProductRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class CartService {
@@ -18,7 +17,6 @@ public class CartService {
         this.productRepository = productRepository;
     }
 
-    // Get all cart items
     public List<CartItem> getAllCartItems() {
         return cartRepository.findAll();
     }
@@ -39,11 +37,6 @@ public class CartService {
         return cartRepository.save(newItem);
     }
 
-    // Add manually (not used by controller anymore)
-    public CartItem addCartItem(CartItem item) {
-        return cartRepository.save(item);
-    }
-
     // Remove a specific cart item
     public void removeCartItem(Long id) {
         cartRepository.deleteById(id);
@@ -54,8 +47,4 @@ public class CartService {
         cartRepository.deleteAll();
     }
 
-    // Get a specific item
-    public Optional<CartItem> getCartItemById(Long id) {
-        return cartRepository.findById(id);
-    }
 }
